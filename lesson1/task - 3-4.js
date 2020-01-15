@@ -1,7 +1,9 @@
 /*task #3 - declaring variables, displaying them, assigning the value of one variable to another
  variable and displaying them again*/
-let a = 345;
-let b = "Summer"
+var a;
+var b;
+a = 345;
+b = "Summer"
 alert(a);
 alert(b);
 a = b;
