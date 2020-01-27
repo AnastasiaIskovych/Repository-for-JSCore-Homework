@@ -1,0 +1,165 @@
+/*  task -1 
+. Напишіть функцію propsCount(currentObject), яка приймає об’єкт і визначає кількість властивостей цього об’єкта.
+Наприклад для об’єкта
+let mentor = { 
+            course: "JS fundamental", 
+            duration: 3,
+            direction: "web-development" 
+        };
+Результат має бути 3 */
+
+function propsCount(currentObject) {
+    console.log(Object.keys(currentObject).length);
+}
+
+
+
+/*task - 2
+2. Створіть довільний об’єкт, який має 5 полів. Необхідно написати функцію showProps(obj), 
+яка приймає даний об’єкт і виводить список його властивостей записаних в масив. 
+Виведіть також масив значень властивостей об’єкта.*/
+
+var student = {
+    name: "Ivan",
+    lastName: "Ivanenko",
+    age: 22,
+    faculty: "Economics",
+    speciality: "Makrketing"
+}
+function showProps(obj) {
+console.log(Object.keys(obj));
+console.log(Object.values(obj));
+}
+showProps(student);
+
+
+
+
+
+//task - 3
+
+class Worker {
+    #experience = 1.2;
+  
+    constructor(fullName, dayRate, workingDays) {
+        this.fullName = fullName;
+        this.dayRate = dayRate;
+        this.workingDays = workingDays;
+    }
+  
+    showSalary() {
+        return this.dayRate * this.workingDays; 
+    }
+  
+    showSalaryWithExperience() {
+        return this.showSalary() * this.#experience;
+    }
+    
+    get experience() {
+        return this.#experience;
+    }
+
+    set experience(value) {
+		this.#experience = value;
+    }
+	
+}
+
+var worker1 = new Worker("Homa Homenko", 5, 23);
+console.log(worker1.fullName); 
+console.log("Salary: " + worker1.showSalary());
+console.log("New experience: " + worker1.experience);
+console.log("Salary: " + worker1.showSalaryWithExperience());  
+worker1.experience = 1.5;
+console.log("New experience: " + worker1.experience);
+console.log("Salary: " + worker1.showSalaryWithExperience());
+
+// останнє завдання з 3го - не знаю як зробити
+
+var worker2 = new Worker("Ruslan Ruslanenko", 45, 22);
+var worker3 = new Worker("Ivan Ivanenko", 72, 24);
+var worker4 = new Worker("Kuzma Kusmenko", 14, 25);
+
+
+
+
+
+
+// task - 4
+class Person {
+    constructor(name, surname) {
+        this.name = name;
+        this.surname = surname;
+    }
+  
+  	showFullName() {
+      return this.name + " " + this.surname; 
+    }
+}
+class Student extends Person {
+    constructor(name, surname, year) {
+        super(name, surname);
+        this.year = year;
+    }
+  
+    showFullName(middleName) {
+    	return this.surname + " " + this.name + " " + middleName; 
+    }
+  
+  	showCourse() {
+      var currentDate = new Date().getFullYear();
+      return currentDate - this.year;
+    }
+}
+
+var stud1 = new Student("Petro", "Petrenko", 2015);
+console.log(stud1.showFullName("Petrovych")); // Petrenko Petro Petrovych
+console.log("Current course: " + stud1.showCourse()); 
+
+
+
+
+//task - 5 не знаю як зробити
+
+class GeometricFigure {
+    getArea() {
+    return 0;
+    }
+    toString() {
+         return Object.getPrototypeOf(this).constructor.name;
+    }
+}
+
+
+class Triangle extends GeometricFigure {
+    constructor(perimeter, height) {
+        this.perimeter = perimeter;
+        this.height = height;
+    }
+    getArea() {
+        return this.perimeter * 1/2 * this.height; 
+    }
+
+}
+class Square extends GeometricFigure {
+    constructor(side) {
+        this.side = side;
+    }
+    getArea() {
+        return this.side ** 2;
+    }
+}
+class Circle extends GeometricFigure {
+    p = 3.14; 
+    constructor(radius) {
+        this.radius = radius;
+    }
+    getArea() {
+        return r * p;
+    }
+
+}
+
+HandleFigures(figures) {
+    console.log(figures.hasOwnProperty(x));
+}
