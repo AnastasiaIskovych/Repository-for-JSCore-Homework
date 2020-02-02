@@ -197,7 +197,7 @@ function handleFigures(figures) {
     return figures.reduce(function (sum, figure) {
         if (figure instanceof GeometricFigure) {
             console.log("Geometric figure: " + figure.toString() + " - area: " + figure.getArea());
-            return sum + figure.getArea(); //тут не працює - не відображає суму площ всіх фігур 
+            return sum + figure.getArea(); 
         }
         throw Error("Incorrect data was entered");
     }, 0);
