@@ -1,0 +1,238 @@
+<!--Task 2
+напишіть функцію changeCSS(), яка спрацьовуватиме по кліку 
+на кнопку і змінюватиме стиль вмісту тега <p>: колір шрифту 
+– оранжевий, розмір шрифту 20 пс, шрифт сімейства "Comic Sans MS". -->
+
+
+<p id ='text'>I'm learning JavaScript events!</p> 
+<div>
+    <button id = "myButton" >Change style!</button>
+    <script>
+        document.getElementById("myButton").onclick = function() {
+                document.getElementById("text").style.color = "orange";
+                document.getElementById("text").style.fontSize = "20px";
+                document.getElementById("text").style.fontFamily = "Comic Sans MS";
+        }
+    </script>
+</div> 
+
+
+
+
+
+
+
+
+
+
+
+<!--Task -3 
+Задано сторінку з 3 кнопками і 1 лінкою. Напишіть Javascript код і реалізуйте HTML-сторінку з відповідними подіями на кожному елементові:
+1) 1-ша кнопка – при кліку на неї колір фону сторінки міняється на синій
+2) 2-га кнопка – при подвійному кліку на неї колір фону сторінки міняється на рожевий
+3) 3-я кнопка – при натисненні і утримуванні кнопки колір фону сторінки стає коричневий. При відпусканні – білий.
+4) При наведенні на лінку – колір фону стає жовтим, при відведенні – білим. -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id = "firstButton">Click to make the page blue</button>
+    <button id = "secondButton">Double-click to make the page pink</button>
+    <button id = "thirdButton">Click and hold to make the page brown</button>
+    <a id="hover1">Hover over to make the page yellow</a>
+    </button>
+    <script>
+        document.getElementById("firstButton").onclick = function() {
+            document.getElementsByTagName("body")[0].style.backgroundColor = "blue";
+        }
+
+        document.getElementById("secondButton").addEventListener("dblclick", makePink); 
+        function makePink() {
+            document.getElementsByTagName("body")[0].style.backgroundColor = "pink";
+        }
+
+        document.getElementById("thirdButton").addEventListener("mousedown", makeBrown);
+        document.getElementById("thirdButton").addEventListener("mouseup", makeWhite);
+        function makeBrown() {
+            document.getElementsByTagName("body")[0].style.backgroundColor = "brown";
+        }
+        function makeWhite() {
+            document.getElementsByTagName("body")[0].style.backgroundColor = "white";
+        }   
+
+        document.getElementById("hover1").addEventListener("mouseover", makeYellow);
+        document.getElementById("hover1").addEventListener("mouseout", makeWhite);
+        function makeYellow() {
+            document.getElementsByTagName("body")[0].style.backgroundColor = "yellow";
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+<!--Task 4
+Реалізуйте програму, яка по натисканню на кнопку видалятиме обраний 
+елемент випадаючого списку. Можуть видалятися всі елементи в будь-якому порядку. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select id="names">
+        <option value="peter">Peter</option>
+        <option value="John">John</option>
+        <option value="Alise">Alise</option>
+        <option value="Alex">Alex</option>
+        <option value="Iren">Iren</option>
+    </select>
+    <button id="delete" onclick="deleteItems()">Choose and delete</button>
+    <script>
+        function deleteItems() {
+            var chosenItem = document.getElementById("names");
+            chosenItem.remove(chosenItem.selectedIndex); 
+        }
+    </script>
+
+</body>
+</html>
+
+
+
+<!--TASK -5
+Реалізуйте програму, яка по натисканню на кнопку виводитиме повідомлення 
+"I was pressed!", при наведенні на кнопку виводитиме повідомлення "Mouse 
+on me!", а при відведенні курсора миші виводитиме повідомлення "Mouse is not on me!". -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="button">Live button!</button>
+    <script>
+        document.getElementById("button").onclick = function() {
+            let pressed = document.createElement("p");
+            pressed.innerHTML = "I was pressed";
+            document.getElementsByTagName("script")[0].before(pressed);
+        }
+        document.getElementById("button").addEventListener("mouseover", mouseOnMe);
+        document.getElementById("button").addEventListener("mouseout", noMouse);
+        function mouseOnMe() {
+            let mouseOn = document.createElement("p");
+            mouseOn.innerHTML = "Mouse on me!";
+            document.getElementsByTagName("script")[0].before(mouseOn);
+        }
+        function noMouse() {
+            let mouseOut = document.createElement("p");
+            mouseOut.innerHTML = "Mouse is not on me!";
+            document.getElementsByTagName("script")[0].before(mouseOut);
+        }
+
+    </script>
+</body>
+</html>
+
+
+
+<!-- TASK 6 
+Реалізуйте програму, яка відслідковуватиме зміну розміру (ширини і висоти) вікна 
+браузера і виводитиме на поточну сторінку при її розтязі/стисканні відповідні значення. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="size"></p>
+    <script>
+        function windowSize() {
+            document.getElementById("size").innerHTML = "Width: " + document.documentElement.clientWidth + ", " + "Height: " 
+        + document.documentElement.clientHeight;
+        }
+        window.addEventListener("resize", windowSize);
+    </script> 
+</body>
+</html>
+
+
+
+<!-- TASK 7
+На сторінці потрібно реалізувати 2 випадаючих списки. У першому містяться назви країн, у другому – назви міст. 
+Реалізувати роботу таким чином, щоб коли вибирається з лівого випадаючого списку певна країна 
+- в правому випадаючому  списку з'являлися міста цієї країни. Також потрібно нижче вивести назву обраної країни і місто. -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select id="countries">
+        <option value="USA">USA</option>
+        <option value="Ukraine">Ukraine</option>
+        <option value="Germany">Germany</option>
+    </select>
+    <select id="cities">
+    </select>
+    <script>
+        var usa = ["New York", "Washington", "Chicago"];
+        var ukraine = ["Kyiv", "Lviv", "Odesa"];
+        var germany = ["Berlin", "Hamburg", "Munich"];
+
+        document.getElementById("countries").addEventListener("change", addCities);
+        function addCities() {
+            var getCities = document.getElementById("cities");
+            cities.innerHTML = "";
+            var citiesOfCountry = [];
+            if (this.value == "USA") {
+                citiesOfCountry = usa;
+            }
+            else if (this.value == "Ukraine") {
+                citiesOfCountry = ukraine;
+            }
+            else {
+                citiesOfCountry = germany;
+            }
+            for (var i = 0; i < 3; i++) {
+                var option = document.createElement("option");
+                option.value = (i+1);
+                var textNode = document.createTextNode(citiesOfCountry[i]);
+                option.appendChild(textNode);
+                cities.appendChild(option);
+            }
+        }
+
+    </script>
+</body>
+</html>
+
+
+
+
+
