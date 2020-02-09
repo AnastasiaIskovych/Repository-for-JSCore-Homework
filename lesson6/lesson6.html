@@ -1,0 +1,259 @@
+<!--task 1 
+На HTML-сторінці є елемент div:
+    <body>	
+	<div id="test">First</div>
+  </body>	
+Потрібно змінити вміст елемента із First на Last. Доступіться до елемента div хоча б 2 способами.
+
+1st method -->
+
+<body>	
+    <div id="test">First</div>
+    <script>
+    document.getElementById("test").innerHTML = "Last";
+    </script>
+</body>	
+
+<!-- 2nd method -->
+
+<body>	
+    <div id="test">First</div>
+    <script>
+    var updatedDiv = document.getElementsByTagName("div")[0];
+    updatedDiv.innerHTML = "Last";
+    </script>
+</body>	
+
+
+
+
+
+
+
+
+<!--
+2. На сторінці є елемент зображення:
+     <body>
+		   <img class="image" src="dog.jpg">
+     </body>
+Потрібно змінити зображення dog.jpg на cat.jpg.
+Виведіть в модальному вікні вміст тегу img з новим зображенням. */
+-->
+
+   
+<body>
+    <img class="image" src="dog.jpg">
+    <script>
+        var imageNew = document.getElementsByClassName("image")[0].src = "cat.jpg";
+        alert(imageNew);
+    </script>
+</body>
+
+
+
+
+
+
+
+
+<!--task 3
+На вказаній HTML-сторінці необхідно отримати всі елементи всередині тега div
+по селектору (використати метод document.querySelectorAll). І вивести їх вміст
+із вказанням номеру абзацу в такому форматі: Selector text 0: First paragraph
+-->
+
+
+<body>
+    <h2>Article header</h2>
+    <div id="text">
+        <p>First paragraph</p>
+        <p>Second paragraph</p>
+        <p>Third paragraph</p>
+    </div>
+    <p>Another text</p>
+    <script>
+        var paragraphs = document.querySelector('#text');
+        paragraphs = paragraphs.querySelectorAll('p');
+        for (var i = 0; i < paragraphs.length; i++) {
+        console.log("Selector text " + i + ": " + paragraphs[i].innerHTML);
+        }
+    </script>
+</body>
+
+
+
+
+
+
+
+
+
+
+<!-- task 4
+На HTML-сторінці є ненумерований список з id=&quot;list&quot;, який складається із 5
+елементів. У модальному вікні необхідно послідовно вивести вміст:
+1) першого елемента списку
+2) останнього елемента списку
+3) другого елемента списку
+4) четвертого елемента списку
+5) третього елемента списку
+-->
+<!-- Method 1 -->
+
+
+<body>
+    <ul id="listNumbers">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <script>
+        var li1 = document.body.firstElementChild.firstElementChild;
+        alert(li1.innerHTML);
+        var liLast = document.body.firstElementChild.lastElementChild;
+        alert(liLast.innerHTML);
+        var li2 = document.body.children[0].children[1];
+        alert(li2.innerHTML);
+        var li4 = document.body.firstElementChild.children[3];
+        alert(li4.innerHTML);
+        var li3 = document.body.firstElementChild.children[2];
+        alert(li3.innerHTML);
+
+    </script>
+</body>
+
+
+<!--Method 2  --> 
+<body>
+    <ul id="listNumbers">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <script>
+        var li1 = document.body.children[0].children[0];
+        alert(li1.innerHTML);
+        var liLast = document.body.children[0].children[4];
+        alert(liLast.innerHTML);
+        var li2 = li1.nextElementSibling;
+        alert(li2.innerHTML);
+        var li4 = liLast.previousElementSibling;
+        alert(li4.innerHTML);
+        var li3 = li2.nextElementSibling;
+        alert(li3.innerHTML);
+
+
+
+    </script>
+</body>
+   
+
+
+
+
+
+
+
+
+<!-- Task 5 
+Напишіть скріпт, який за допомогою засобів DOM простилізує сторінку
+-->
+
+<body>
+    <h1>I'am a big header!!!</h1>
+    <div id="myDiv">
+        <p>First paragraph</p>
+        <p>Second paragraph</p>
+        <p>Third paragraph</p>
+        <p>Fourth paragraph</p>
+    </div>
+    <ul id="myList">
+        <li>Make</li>
+        <li>me</li>
+        <li>horizontal!</li>
+    </ul>
+    <span>Make me invisible, please!</span>
+    <script>
+        document.body.firstElementChild.style.backgroundColor = "#90ee90";
+        document.body.children[1].firstElementChild.style.fontWeight = "bold";
+        document.body.children[1].children[1].style.color = "red";
+        document.body.children[1].children[2].style.textDecoration = "underline";  
+        document.body.children[1].lastElementChild.style.fontStyle = "italic";
+        document.body.children[3].style.opacity = 0;
+        var newString = document.getElementById("myList");
+        newString.innerHTML = "Makemehorizontal";
+        </script>
+</body> 
+
+
+
+
+
+
+
+
+
+
+
+<!-- Task 6
+Задано HTML-сторінку:
+    <body>
+<input type="text" id="input1" value="Text1">
+<input type="text" id="input2" value="Text2">
+  </body>
+Користувач почергово вводить 2 повідомлення (використати prompt()). 1-е повідомлення записується в 1-ий <input>, 2-ге – в 2-ий.
+Поміняти значення 1-го і 2-го інпутів місцями. -->
+
+
+<body>
+    <input type="text" id="input1" value="Text1">
+    <input type="text" id="input2" value="Text2">
+    <script>
+        var inputFirst = document.getElementById("input1");
+        inputFirst.value = prompt("First input", "");
+        var inputSecond = document.getElementById("input2");
+        inputSecond.value = prompt("Second input", "");
+        var swap = inputFirst.value;
+        inputFirst.value = document.getElementById("input2").value;
+        inputSecond.value = swap;
+
+    </script>
+</body>
+
+
+
+
+
+<!--Task 7 
+Напишіть скріпт, який за допомогою засобів DOM створить для порожньої
+HTML-сторінки таку структуру з тегів і їх атрибутів.
+pTag.innerHTML = "First paragraph"; -->
+
+
+<body>
+    <script>
+        var mainTag = document.createElement("main");
+        mainTag.className = "MainClass check item";
+        var divTag = document.createElement("div");
+        divTag.id = "myDiv";
+        var pTag = document.createElement("p");
+        var pText = document.createTextNode("First paragraph");
+        pTag.appendChild(pText);
+        var mainElement = document.getElementsByTagName("body")[0];
+        mainElement.appendChild(mainTag);
+        mainTag.append(divTag);
+        divTag.appendChild(pTag);
+    </script>
+</body>
+
+
+
+
+
+
+    
+
