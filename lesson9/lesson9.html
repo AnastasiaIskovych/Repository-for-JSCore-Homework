@@ -1,0 +1,163 @@
+<!-- task 1 
+На HTML-сторінці є посилання &lt;a&gt;. У випадку коли, href починається на
+https://, потрібно додати посиланню атрибут target=&quot;_blank&quot;. -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+    <a href="https://weather.com/">Link</a>
+    <script>
+
+        $("a[href^='https://']").attr("target", "_blank");
+        
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+<!-- task 2
+Для заданої сторінки знайдіть всі <h2> з класом head, зробіть для них зелений колір
+ фону, потім серед знайдених елементів знайдіть елементи з класом inner і поставте їм розмір шрифту 35px.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+    <h2 class="head">header1</h2>
+    <h2 class="head">header2 <span class="inner">inner elem1</span></h2>
+    <h2>header3</h2>
+    <h2 class="head">header4<span>inner elem2</span></h2>
+    <h2>header5</h2>
+    <script>
+
+       var greenBackground = $(".head").css("background-color", "green");
+        $(".inner").css("fontSize", "35px");
+        
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+<!-- TASK 3
+Знайдіть теги <div>, які стоять безпосередньо після <h3> і перемістіть кожен <div>-елемент так, щоб він став безпосередньо над <h3>.
+   <h3>header1</h3>
+   <div>text1</div>
+   <h3>header2</h3>
+   <div>text2</div>
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+</head>
+<body>
+    <h3>header1</h3>
+    <div>text1</div>
+    <h3>header2</h3>
+    <div>text2</div>
+    <script>
+
+        $("h3+div").each(function(i, el) {
+            $(this).insertBefore($("h3")[i]);
+        });  
+        
+    </script> 
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+<!-- Task 4
+На HTML-сторінці є 6 чекбоксів.
+Напишіть скріпт, який після того, як користувач позначив будь-які 3 чекбокси, всі решта чекбоксів робить неактивними. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+</head>
+<body>
+    <p>Favorite fruits</p>
+    <form id="fruits">
+        <label for="apples"><input id="apples" type="checkbox" name="fruits" value="Apples">Apples</label> <br>
+
+        <label for="kiwis"><input id="kiwis" type="checkbox" name="fruits" value="Kiwis">Kiwis</label> <br>
+
+        <label for="melons"><input id="melons" type="checkbox" name="fruits" value="Melons">Melons</label> <br>
+
+        <label for="banabas"><input id="banabas" type="checkbox" name="fruits" value="Banabas">Banabas</label> <br>
+
+        <label for="pineapples"><input id="pineapples" type="checkbox" name="fruits" value="Pineapples">Pineapples</label> <br>
+
+        <label for="oranges"><input id="apples" type="checkbox" name="fruits" value="Oranges">Oranges</label> <br>
+
+      </form>
+    <script>
+        
+   $("input[name='fruits']").on("change", function() {
+        var currentLength = $("input[name='fruits']:checked").length;
+         (currentLength === 3) 
+        {
+            $("input:checkbox:not(:checked)").attr("disabled", true);
+        }
+    });
+
+
+    </script>
+</body>
+</html>
