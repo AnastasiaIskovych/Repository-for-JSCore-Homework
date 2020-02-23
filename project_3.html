@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #ffc3a0;
+            padding: 20px;
+        }
+        input {
+            padding: 7px;
+            height: 20px;
+            width: 250px;
+        }
+        button {
+            background-color: rgb(77, 19, 95) ;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 2px;
+            cursor: pointer;
+        }
+        h1 {
+            text-align: center;
+            color:  rgb(77, 19, 95);
+            font-size: 35px;
+            /*background-color:rgb(147, 60, 173); */
+            padding: 15px;
+            height: 40px;
+            
+        }
+        #form {
+            text-align: center;
+        }
+        #results {
+            text-align: center;
+        }
+        input[type=text], select {
+            padding: 15px 5px;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            }
+        hr {
+            color: rgb(147, 60, 173);
+            margin: 25px;
+        }
+        label {
+            color: rgb(77, 19, 95) ;
+        }
+
+    </style>
+</head>
+
+<body>
+    <hr>
+    <h1><strong>Registration Form</strong></h1>
+    <hr>
+
+    <div id="form">
+    <label id="family-name-label" for="family-name"><b>Family name</b></label> <br>
+    <input id="family-name" type="text" placeholder="Smith" required>  <br> <br>
+
+
+    <label for="first-name"><b>First name</b></label> <br>
+    <input id="first-name" type="text" placeholder="Sam" required> <br> <br>
+
+
+    <label for="age"><b>Age</b></label> <br>
+    <input id="age" type="text" placeholder="32" required> <br> <br>
+
+
+    <label for="education"><b>Education</b></label> <br>
+    <input id="education" type="text" placeholder="Harvard University"> <br> <br>
+
+
+    <label for="job"><b>Desirable job</b></label> <br>
+    <input id="job" type="text" placeholder="CEO" required><br> <br>
+
+    <button id="submitData">Submit</button><br>
+    </div>
+    
+    <div id="results"></div>
+    <hr>
+
+    <script>
+        const inpLabelFamily = document.getElementsByTagName("label")[0].textContent;
+        const inpLabelFirst = document.getElementsByTagName("label")[1].textContent;
+        const inpLabelAge = document.getElementsByTagName("label")[2].textContent;
+        const inpLabelEducation = document.getElementsByTagName("label")[3].textContent;
+        const inpLabelJob = document.getElementsByTagName("label")[4].textContent;
+
+        
+        submitData.onclick = function checkNetwork() {
+            var connection = window.navigator.onLine;
+            if (connection == false) {
+                var familyName = document.getElementById("family-name").value;
+                var firstName = document.getElementById("first-name").value;
+                var age = document.getElementById("age").value;
+                var education = document.getElementById("education").value;
+                var job = document.getElementById("job").value;
+                var btnSubmit = document.getElementById("submitData");
+                var lsresults = document.getElementById("results");
+
+               
+                localStorage.setItem(inpLabelFamily, familyName);
+                localStorage.setItem(inpLabelFirst, firstName);
+                localStorage.setItem(inpLabelAge, age);
+                localStorage.setItem(inpLabelEducation, education);
+                localStorage.setItem(inpLabelJob, job);
+
+                location.reload();
+                }
+                else {
+                    alert("You have successfully registered!");
+                    location.reload();
+                }
+
+        }
+     
+
+
+        window.addEventListener("load", isThereConnection);
+        function isThereConnection() {
+            var checkConnection = window.navigator.onLine;
+            if (checkConnection === true) {
+                for (var i = 0; i <localStorage.length; i++) {
+                    var key = localStorage.key(i);
+                    var value = localStorage.getItem(key);
+                    
+                    var pNew = document.createElement("p");
+                    pNew.innerHTML = key + " : " + value;
+                    div = document.getElementById("results")
+                    div.appendChild(pNew);
+                }  
+                localStorage.clear();
+            }
+            else { 
+                
+                return; }
+        }
+
+
+        
+
+       
+    </script>
+
+</body>
+</html>
